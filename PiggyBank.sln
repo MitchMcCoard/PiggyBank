@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33214.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiggyBank", "PiggyBank.csproj", "{55B76DFB-EB52-4E8C-BB69-0E4CEA3BF219}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55B76DFB-EB52-4E8C-BB69-0E4CEA3BF219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55B76DFB-EB52-4E8C-BB69-0E4CEA3BF219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55B76DFB-EB52-4E8C-BB69-0E4CEA3BF219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55B76DFB-EB52-4E8C-BB69-0E4CEA3BF219}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECBB8444-C9D7-480B-B376-575D20AA1399}
+	EndGlobalSection
+EndGlobal
