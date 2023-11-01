@@ -1,7 +1,7 @@
 
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace PiggyBank
+namespace PiggyBank.Models
 {
     public class PiggyBankContext : DbContext
     {
@@ -10,7 +10,7 @@ namespace PiggyBank
             : base(options) { }
 
         //Should be a dbset, not a property
-        public float CurrentSavings { get; set; }
+        public virtual DbSet<SavingsGoal> SavingsGoals {get; set;}
        
     }
 
