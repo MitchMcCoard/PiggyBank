@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace PiggyBank
 {
@@ -24,6 +25,10 @@ namespace PiggyBank
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<PiggyBankContext>(options => {
+                options.UseSqlite(Configuration.GetConnectionString("PiggyBankConnection"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
