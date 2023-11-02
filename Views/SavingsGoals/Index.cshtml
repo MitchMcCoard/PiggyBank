@@ -1,0 +1,97 @@
+﻿@model IEnumerable<PiggyBank.Models.SavingsGoal>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Your Savings Goals</h1>
+<div class="container mt-4">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                <p class="card-text">
+                    <span class="card-number font-weight-bold">@Html.DisplayFor(modelItem => item.GoalPrice)</span>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </p>
+                <p class="card-text">
+                    Available Balance:
+                    <span class="card-number font-weight-bolder text-success">$1,234.56</span>
+                </p>
+                <img src="@item.LinkToImage)" />
+                <p>
+                    <div class="row">
+                        <a asp-action="Edit" asp-route-id="@item.ID" class="pl-4 pr-4">Edit</a>  |
+                        <a asp-action="Details" asp-route-id="@item.ID" class="pl-4 pr-4">Details</a> | 
+                        <a asp-action="Delete" asp-route-id="@item.ID" class="pl-4">Delete</a>
+                    </div>
+                </p>
+                
+                
+            </div>
+        </div>
+    }
+    <br />
+    
+        <a asp-action="Create">
+            <button class="btn btn-success">
+                Add a Savings Goal
+            </button>
+        </a>
+    <br />
+    <br />
+    <div class="row bg-danger col-12">Under this is the default page</div>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GoalPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LinkToPage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LinkToImage)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GoalPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LinkToPage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LinkToImage)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
