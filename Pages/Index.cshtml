@@ -1,39 +1,28 @@
 ﻿@page
-@model IndexModel
+
 @{
     ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">[User Name]'s Piggy Bank</h1>
+    <h1 class="display-4">Decomissioned!!</h1>
     <p>Check you account balance and savings goals below</p>
 </div>
-    <div class="container mt-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Your Account Balance</h5>
-                <p class="card-text">
-                    Available Balance:
-                    <span class="card-number font-weight-bolder text-success">$1,234.56</span>
-                </p>
-            </div>
-        </div>
-        <div class="card">
+<div class="container mt-4">
+    <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Your Savings Goals</h5>
+            <h5 class="card-title">Your Account Balance</h5>
             <p class="card-text">
-                Savings Goal:
-                <span class="card-number font-weight-bolder text-success">$2,000</span>
-                <br />
-                Progress:
-                <span class="card-number font-weight-bolder">61.73%</span>
+                Available Balance:
+                <span class="card-number font-weight-bolder text-success">$1,234.56</span>
             </p>
         </div>
-        <a asp-controller="SavingsGoals" asp-action="Create" >
-            <button class="btn btn-success">
-                Add a Savings Goal
-            </button>
-        </a>
-        
     </div>
-</div>    
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Your Savings Goals</h5>
+            <div class="container mt-4">
+ 
+        </div>
+    </div>
+</div>
