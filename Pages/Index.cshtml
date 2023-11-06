@@ -4,25 +4,31 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Decomissioned!!</h1>
-    <p>Check you account balance and savings goals below</p>
-</div>
-<div class="container mt-4">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Your Account Balance</h5>
-            <p class="card-text">
-                Available Balance:
-                <span class="card-number font-weight-bolder text-success">$1,234.56</span>
-            </p>
-        </div>
+<body>
+    <div class="text-center">
+        <p>Check you account balance and savings goals below</p>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Your Savings Goals</h5>
-            <div class="container mt-4">
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Your Account Balance</h5>
+                <p class="card-text">
+                    Available Balance:
+                    <span class="card-number font-weight-bolder text-success">$1,234.56</span>
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Your Savings Goals</h5>
+                <div class="container mt-4">
  
+            </div>
         </div>
     </div>
-</div>
+</body>
+
+<script>
+    // Redirect to the desired page
+    window.location.replace("https://localhost:44331/SavingsGoals");
+</script>
