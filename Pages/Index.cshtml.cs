@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using PiggyBank.Models;
 
 namespace PiggyBank.Pages
 {
@@ -17,9 +19,9 @@ namespace PiggyBank.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+            return Redirect("~/Views/SavingsGoals/Index.cshtml");
         }
     }
 }

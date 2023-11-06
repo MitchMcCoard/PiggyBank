@@ -5,93 +5,158 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Your Savings Goals</h1>
-<div class="container mt-4">
-    @foreach (var item in Model)
-    {
+
+<body onload="savings()">
+    <div class="text-center">
+        <h1 class="display-4">Good Morning, Bobby</h1>
+        <p>Check you account balance and savings goals below</p>
+    </div>
+    <div class="container mt-4">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
-                <p class="card-text">
-                    <span class="card-number font-weight-bold">@Html.DisplayFor(modelItem => item.GoalPrice)</span>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </p>
+                <h1 class="card-title">Your Account Balance</h1>
                 <p class="card-text">
                     Available Balance:
-                    <span class="card-number font-weight-bolder text-success">$1,234.56</span>
+                    <span class="card-number font-weight-bolder text-success">$<span id="availablebalance">1,234.56</span></span>
                 </p>
-                <img src="@item.LinkToImage)" />
-                <p>
-                    <div class="row">
-                        <a asp-action="Edit" asp-route-id="@item.ID" class="pl-4 pr-4">Edit</a>  |
-                        <a asp-action="Details" asp-route-id="@item.ID" class="pl-4 pr-4">Details</a> | 
-                        <a asp-action="Delete" asp-route-id="@item.ID" class="pl-4">Delete</a>
-                    </div>
-                </p>
-                
-                
+                <a asp-action="" id="depositAllowance" onclick="addFunds(); return false;" class="btn btn-success">
+                    Deposit Allowance +
+                </a>
             </div>
         </div>
-    }
-    <br />
-    
-        <a asp-action="Create">
-            <button class="btn btn-success">
+        <br/>
+        <div class="card">
+            <div class="card-body">
+                <h1>Your Savings Goals</h1>
+                @foreach (var item in Model)
+                {
+                    <div class="card model">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                            <p class="card-text">
+                                Cost: $<span id="goalPrice" class="card-number font-weight-bold goalPrice">@Html.DisplayFor(modelItem => item.GoalPrice)</span>
+                                <br/>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </p>
+                            <p class="card-text">
+                                Available Balance:
+                                <span class="card-number font-weight-bolder text-success">$<span id="accountBalance" class="accountBalance">1,234.56</span></span>
+                            </p>
+                            <div id="myProgress" class="myProgress">
+                                <div id="myBar" class="myBar">0%</div>
+                            </div> 
+
+                            <img src="@item.LinkToImage)" />
+                            <br/>
+                            <a asp-action="" class="btn btn-success">
+                                Purchase -
+                            </a>
+                            <p>
+                                <div class="row">
+                                    <a asp-action="Edit" asp-route-id="@item.ID" class="pl-4 pr-4">Edit</a>  |
+                                    <a asp-action="Details" asp-route-id="@item.ID" class="pl-4 pr-4">Details</a> | 
+                                    <a asp-action="Delete" asp-route-id="@item.ID" class="pl-4">Delete</a>
+                                </div>
+                            </p>
+                
+                
+                        </div>
+                    </div>
+
+                }
+                <br />
+
+                <a asp-action="Create" class="btn btn-success">
                 Add a Savings Goal
-            </button>
-        </a>
-    <br />
-    <br />
-    <div class="row bg-danger col-12">Under this is the default page</div>
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.GoalPrice)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LinkToPage)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LinkToImage)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.GoalPrice)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LinkToPage)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LinkToImage)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                    </td>
-                </tr>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function savings()
+    {
+        console.log("savings is running");
+        for (let iCount = 0; iCount < document.getElementsByClassName("card model").length; iCount++) {
+            var i = 0;
+            function move() {
+                if (i == 0) {
+                    i += 1;
+                    var elem = document.getElementById("myBar");
+                    var width = 10;
+                    var id = setInterval(frame, 10);
+                    function frame() {
+                        if (width >= 100) {
+                            clearInterval(id);
+                            i = 0;
+                        } else {
+                            width++;
+                            elem.style.width = width + "%";
+                            elem.innerHTML = width + "%";
+                        }
+                    }
+                }
             }
-        </tbody>
-    </table>
+
+            document.getElementsByClassName("accountBalance")[iCount].innerHTML = document.getElementById("availablebalance").innerHTML
+
+            // Get the Available Balance and GoalPrice values
+            var availableBalance = parseFloat(document.getElementsByClassName("accountBalance")[iCount].innerHTML.replace(",", "")); // You can replace this with the actual available balance value
+            var goalPrice = parseFloat(document.getElementsByClassName("card-number font-weight-bold goalPrice")[iCount].innerHTML); // Get the goal price from your ASP.NET model
+
+            // Calculate the percentage
+            console.log(availableBalance)
+            var percentage = (availableBalance / goalPrice) * 100;
+
+            // Set the percentage as innerHTML of the "myBar" element
+            var myBar = document.getElementsByClassName("myBar")[iCount];
+            if (percentage >= 100) {
+                myBar.style.width = "100%";
+                myBar.innerHTML = "100%";
+            }
+            else {
+                myBar.style.width = percentage + "%";
+                myBar.innerHTML = percentage.toFixed(2) + "%"; // Use toFixed(2) to format the percentage with 2 decimal places
+            }
+        };
+    };
+
+    function addFunds() {
+        var parentPassword = prompt("What is the parent password?\n(Entering the password will add $100 to Bobby's available funds)").toLowerCase();
+
+        // Check if the entered password is correct (you can replace 'parent' with the actual parent password)
+        if (parentPassword === "parent") {
+            // Password is correct, proceed with the deposit
+            var currentBalanceElement = document.getElementById("availablebalance");
+            var currentBalance = parseFloat(currentBalanceElement.innerHTML.replace(",", ""));
+            console.log(currentBalance)
+            // Increase the account balance by $100
+            currentBalance += 100;
+            currentBalanceElement.innerHTML = currentBalance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+            savings();
+        } 
+        else {
+            // Password is incorrect, you can display an error message or take other actions
+            alert("Incorrect parent password. Please try again.");
+        }
+    };
+</script>
+
+
+<style>
+    #myProgress {
+        width: 90%;
+        background-color: grey;
+    }
+
+    #myBar {
+        width: 0%;
+        height: 30px;
+        background-color: #04AA6D;
+        text-align: center; /* To center it horizontally (if you want) */
+        line-height: 30px; /* To center it vertically */
+        color: white;
+    }
+</style>
